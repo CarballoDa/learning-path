@@ -1,16 +1,3 @@
-NUMBERS_TO_LED = {
-    0: ["#####", "#   #", "#   #", "#   #", "#   #", "#   #", "#   #", "#   #", "#####"],
-    1: ["#", "#", "#", "#", "#", "#", "#", "", "#"],
-    2: ["###", "", "  #", "", "###", "", "#   ", "", "###"],
-    3: ["###", "", "  #", "", "###", "", "  #", "", "###"],
-    4: ["# #", "", "# #", "", "###", "", "  #", "", " #"],
-    5: ["###", "", "#  ", "", "###", "", "  #", "", "###"],
-    6: ["###", "", "#  ", "", "###", "", "# #", "", "###"],
-    7: ["###", "", "  #", "", "  #", "", "  #", "", "  #"],
-    8: ["###", "", "# #", "", "###", "", "# #", "", "###"],
-    9: ["###", "", "# #", "", "###", "", "  #", "", "###"]
-}
-
 NUMBERS_TO_LED_BIG = {
     0: [
         "#####",
@@ -125,22 +112,12 @@ NUMBERS_TO_LED_BIG = {
 }
 
 def print_leds(number):
-    number_lines = []
     if number < 0:
         raise ValueError('Error: debe ser un numero entero positivo mayor o igual que cero')
     
     digits = list(str(number))
     height = len(next(iter(NUMBERS_TO_LED_BIG.values())))
     for row in range(height):
-        content = []
-        for num in digits:            
-            content.append(NUMBERS_TO_LED_BIG[int(num)][row])
-        print(" ".join(content))
-        
-        """ 
-        # Option in line
-        for row in range(height):
-            print(" ".join(NUMBERS_TO_LED_BIG[int(d)][row] for d in digits))
-        """
+        print(" ".join(NUMBERS_TO_LED_BIG[int(d)][row] for d in digits))
         
 print_leds(9081726354)

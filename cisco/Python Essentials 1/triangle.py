@@ -62,9 +62,7 @@ def is_a_triangle(a: float, b: float, c: float) -> bool:
         >>> is_a_triangle(1, 0.5, 2)
         False
     """
-    if not validate_sides(a, b, c):
-        return False
-    return a + b > c and a + c > b and b + c > a
+    return False if not validate_sides(a, b, c) else a + b > c and a + c > b and b + c > a
 
 def is_a_right_triangle(a: float, b: float, c: float) -> bool:
     """
@@ -168,9 +166,7 @@ def area_of_triangle(a: float, b: float, c: float) -> float | bool:
         >>> area_of_triangle(0, 0, 0)
         False
     """
-    if not is_a_triangle(a, b, c):
-        return False
-    return heron(a, b, c)
+    return False if not is_a_triangle(a, b, c) else heron(a, b, c)
 
 # ====================================
 # Pruebas rápidas de ejecución directa

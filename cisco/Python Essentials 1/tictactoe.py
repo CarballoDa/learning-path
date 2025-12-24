@@ -11,28 +11,30 @@ BOARD_POS_LOCATIONS = {
 }
 
 def print_horizontal_divider():
-    """Imprime una línea horizontal que separa las filas del tablero."""
+    """Prints a horizontal line that separates the rows of the board."""
     print(HORIZONTAL_DIVIDER)
     
 def print_vertical_divider():
-    """Imprime una línea vertical que separa las columnas del tablero."""
+    """Prints a vertical line that separates the columns of the board."""
     print("{0}       {0}       {0}       {0}".format(VERTICAL_DIVIDER))
     
 def print_cells_in_row(cells):
-    """Imprime una fila horizontal del tablero con las piezas en sus respectivas posiciones.
+    """Prints a horizontal row of the board with the pieces in their respective positions.
+    
     Args:
-        cells (list): Las piezas en las celdas de la fila.
+        cells (list): The pieces located in the row's cells.
     Returns:
         None
     """
     print("{0}   {1}   {0}   {2}   {0}   {3}   {0}".format(VERTICAL_DIVIDER, cells[0], cells[1], cells[2]))
     
 def print_row(cells, top=False, bottom=False):
-    """Imprime una fila del tablero, incluyendo los divisores horizontales si es necesario.
+    """Prints a row of the board, including horizontal dividers if required.
+    
     Args:
-        cells (list): Las piezas en las celdas de la fila.
-        top (bool): Indica si se debe imprimir un divisor horizontal en la parte superior.
-        bottom (bool): Indica si se debe imprimir un divisor horizontal en la parte inferior.
+        cells (list): The pieces located in the row's cells.
+        top (bool): Indicates whether a horizontal divider should be printed at the top.
+        bottom (bool): Indicates whether a horizontal divider should be printed at the bottom.
     Returns:
         None    
     """
@@ -45,9 +47,10 @@ def print_row(cells, top=False, bottom=False):
         print_horizontal_divider()
 
 def display_board(board):
-    """Imprime el tablero completo de Tic Tac Toe.
+    """Prints the complete Tic Tac Toe board.
+    
     Args:
-        board (list): El estado actual del tablero de Tic Tac Toe.
+        board (list): The current state of the Tic Tac Toe board.
     Returns:
         None
     """
@@ -56,12 +59,13 @@ def display_board(board):
     print_row(board[2], top=False, bottom=True)
     
 def check_movement(movement, board):
-    """Verifica si el movimiento ingresado por el usuario es válido.
+    """Checks whether the move entered by the user is valid.
+    
     Args:
-        movement (int): El movimiento ingresado por el usuario.
-        board (list): El estado actual del tablero de Tic Tac Toe.
+        movement (int): The move entered by the user.
+        board (list): The current state of the Tic Tac Toe board.
     Returns:
-        bool: True si el movimiento es válido, False en caso contrario.
+        bool: True if the move is valid, False otherwise.
     """
     available_cells = make_list_of_free_fields(board)
     if BOARD_POS_LOCATIONS[movement] in available_cells:
@@ -69,13 +73,14 @@ def check_movement(movement, board):
     return False
 
 def make_movement(movement, board, sign):
-    """Realiza el movimiento del usuario en el tablero.
+    """Executes a move on the board.
+    
     Args:
-        movement (int): El movimiento ingresado por el usuario.
-        board (list): El estado actual del tablero de Tic Tac Toe.
-        sign (str): La pieza del jugador que mueve ('X' o 'O').
+        movement (int): The move entered by the user.
+        board (list): The current state of the Tic Tac Toe board.
+        sign (str): The player's piece ('X' or 'O').
     Returns:
-        list: El estado actualizado del tablero después del movimiento del usuario.
+        list: The updated board after the move.
     """
     for row_index, row in enumerate(board):
         for cell_index, cell in enumerate(row):
@@ -84,11 +89,12 @@ def make_movement(movement, board, sign):
                 return board
 
 def enter_move(board):
-    """Solicita al usuario que ingrese su movimiento y actualiza el tablero en consecuencia.
+    """Prompts the user to enter a move and updates the board accordingly.
+    
     Args:
-        board (list): El estado actual del tablero de Tic Tac Toe.
+        board (list): The current state of the Tic Tac Toe board.
     Returns:
-        list: El estado actualizado del tablero después del movimiento del usuario.
+        list: The updated board after the user's move.
     """
     try:
         movement = int(input("Ingresa tu movimiento: "))
@@ -109,11 +115,12 @@ def enter_move(board):
     return make_movement(movement, board, USER_PIECE)
     
 def make_list_of_free_fields(board):
-    """Crea una lista de todas las celdas libres en el tablero.
+    """Creates a list of all free cells on the board.
+    
     Args:
-        board (list): El estado actual del tablero de Tic Tac Toe.
+        board (list): The current state of the Tic Tac Toe board.
     Returns:
-        list: Una lista de tuplas que representan las posiciones (fila, columna) de las celdas libres.
+        list: A list of tuples representing the positions (row, column) of free cells.
     """
     free_cells = []
     for row_index, row in enumerate(board):
@@ -123,12 +130,13 @@ def make_list_of_free_fields(board):
     return free_cells
 
 def victory_for(board, sign):
-    """Determina si el jugador con la pieza especificada ha ganado el juego.
+    """Determines whether the player using the specified piece has won the game.
+    
     Args:
-        board (list): El estado actual del tablero de Tic Tac Toe.
-        sign (str): La pieza del jugador ('X' o 'O').
+        board (list): The current state of the Tic Tac Toe board.
+        sign (str): The player's piece ('X' or 'O').
     Returns:
-        bool: True si el jugador ha ganado, False en caso contrario.
+        bool: True if the player has won, False otherwise.
     """
     indexes_with_sign = []
     sign_by_index = ''
@@ -146,11 +154,12 @@ def victory_for(board, sign):
     return False
 
 def draw_move(board):
-    """Ejecuta el modivimiento de la máquina y redefine el tablero acorde a su decisión.
+    """Executes the machine's move and updates the board based on its decision.
+    
     Args:
-        board (list): El estado actual del tablero de Tic Tac Toe.
+        board (list): The current state of the Tic Tac Toe board.
     Returns:
-        list: El estado actualizado del tablero después del movimiento de la máquina.
+        list: The updated board after the machine's move.
     """
     movement = randrange(1, 10)
     if not check_movement(movement, board):        
@@ -159,28 +168,39 @@ def draw_move(board):
     print("Mi movimiento: {}".format(movement))
     return make_movement(movement, board, MACHINE_PIECE)
 
-"""
-Juego principal de Tic Tac Toe
-game inicial con primer movimiento realizado por la máquina en la posición central (5)
-"""
-game = [ [str(3 * j + i + 1) for i in range(3)] for j in range(3) ]
-game[1][1] = 'X'
-winer = None
-print("Tic Tac Toe - Nuevo Juego")
-display_board(game)
-while len(make_list_of_free_fields(game)) > 0 and winer is None:
-    game = enter_move(game)
-    display_board(game)
-    if victory_for(game, USER_PIECE):
-        winer = USER_PIECE
-    game = draw_move(game)
-    display_board(game)
-    if victory_for(game, MACHINE_PIECE):
-        winer = MACHINE_PIECE
 
-if winer == USER_PIECE:
-    print("¡Has ganado!")
-elif winer == MACHINE_PIECE:
-    print("¡He ganado!")
-else:
-    print("¡Empate!")
+# ====================================
+# Quick tests for direct execution
+# ====================================
+def main():
+    """
+    Main Tic Tac Toe game
+    Game initialized with the machine making the first move in the center position (5)
+    """
+    game = [ [str(3 * j + i + 1) for i in range(3)] for j in range(3) ]
+    game[1][1] = 'X'
+    winer = None
+    print("Tic Tac Toe - Nuevo Juego")
+    display_board(game)
+    while len(make_list_of_free_fields(game)) > 0 and winer is None:
+        game = enter_move(game)
+        display_board(game)
+        if victory_for(game, USER_PIECE):
+            winer = USER_PIECE
+        game = draw_move(game)
+        display_board(game)
+        if victory_for(game, MACHINE_PIECE):
+            winer = MACHINE_PIECE
+
+    if winer == USER_PIECE:
+        print("¡Has ganado!")
+    elif winer == MACHINE_PIECE:
+        print("¡He ganado!")
+    else:
+        print("¡Empate!")
+    
+# ============================
+# Direct execution block
+# ============================
+if __name__ == "__main__":
+    main()

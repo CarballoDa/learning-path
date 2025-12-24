@@ -1,5 +1,5 @@
 # ==========================
-# Constantes globales
+# Global constants
 # ==========================
 
 POUND_TO_KG = 0.45359237
@@ -7,22 +7,22 @@ FOOT_TO_METER = 0.3048
 INCH_TO_METER = 0.0254
 
 # ==========================
-# Funciones
+# Functions
 # ==========================
 
 def lb_to_kg(lb: float) -> float:
     """
-    Convierte libras a kilogramos.
+    Converts weight from pounds to kilograms.
 
     Args:
-        lb (float): Peso en libras.
+        lb (float): Weight in pounds.
 
     Returns:
-        float: Peso equivalente en kilogramos.
+        float: Equivalent weight in kilograms.
         
     Doctest:
-        Casos válidos: 
-        Converir 1 libra a kilogramos.    
+        Valid cases:
+        Convert 1 pound to kilograms.
         >>> lb_to_kg(1)
         0.45359237
     """
@@ -30,41 +30,44 @@ def lb_to_kg(lb: float) -> float:
 
 def feet_inches_to_meters(ft: float, inch: float = 0.0) -> float:
     """
-    Convierte pies y pulgadas a metros.
+    Converts height given in feet and inches to meters.
 
     Args:
-        ft (float): Número de pies.
-        inch (float, opcional): Número de pulgadas. Por defecto 0.0.
+        ft (float): Number of feet.
+        inch (float, optional): Number of inches. Defaults to 0.0.
 
     Returns:
-        float: Altura equivalente en metros.
+        float: Equivalent height in meters.
         
     Doctest:
-        Casos válidos:
-        Converir 1 ft y 1 inch a metros.    
+        Valid cases:
+        Convert 1 foot and 1 inch to meters.
         >>> feet_inches_to_meters(1, 1)
         0.3302
         
-        Converir 6 ft y 0 inch a metros.    
+        Convert 6 feet and 0 inches to meters.
         >>> feet_inches_to_meters(6)
         1.8288000000000002
-    
     """
     return ft * FOOT_TO_METER + inch * INCH_TO_METER
 
 def validate_values(weight: float, height: float):
     """
-    Valida los valores de peso y altura.
+    Validates weight and height values.
+
+    This function checks that weight and height fall within
+    realistic ranges before performing calculations.
 
     Args:
-        weight (float): Peso en kilogramos.
-        height (float): Altura en metros.
+        weight (float): Weight in kilograms.
+        height (float): Height in meters.
 
     Raises:
-        ValueError: Si los valores están fuera de rango (peso <20 o >200, altura <1.0 o >2.5).
+        ValueError: If the values are out of range
+        (weight < 20 or > 200, height < 1.0 or > 2.5).
          
     Doctest:
-        Casos válidos:
+        Valid cases:
         >>> validate_values(70, 1.75)
         True
         >>> validate_values(20, 1.0)
@@ -72,7 +75,7 @@ def validate_values(weight: float, height: float):
         >>> validate_values(200, 2.5)
         True
 
-        Casos inválidos:
+        Invalid cases:
         >>> validate_values(25, 0.5)
         Traceback (most recent call last):
             ...
@@ -82,7 +85,6 @@ def validate_values(weight: float, height: float):
         Traceback (most recent call last):
             ...
         ValueError: Valores fuera de rango para peso o altura
-    
     """
     if not (1.0 <= height <= 2.5 and 20 <= weight <= 200):
         raise ValueError("Valores fuera de rango para peso o altura")
@@ -90,24 +92,27 @@ def validate_values(weight: float, height: float):
 
 def bmi(weight: float, height: float) -> float:
     """
-    Calcula el Índice de Masa Corporal (IMC).
+    Calculates the Body Mass Index (BMI).
+
+    The BMI is calculated using the formula:
+    weight / height²
 
     Args:
-        weight (float): Peso en kilogramos.
-        height (float): Altura en metros.
+        weight (float): Weight in kilograms.
+        height (float): Height in meters.
 
     Returns:
-        float: Valor del IMC.
+        float: The calculated BMI value.
 
     Doctest:
-        Casos válidos:
+        Valid cases:
         >>> bmi(52.5, 1.65)
         19.283746556473833
 
         >>> bmi(70, 1.75)
         22.857142857142858
 
-        Casos inválidos (fuera de rango):
+        Invalid cases (out of range):
         >>> bmi(10, 1.8)
         Traceback (most recent call last):
             ...
@@ -122,15 +127,15 @@ def bmi(weight: float, height: float) -> float:
     return weight / height ** 2
 
 # ====================================
-# Pruebas rápidas de ejecución directa
+# Quick tests for direct execution
 # ====================================
 def main():
-    # Se limita la salida a dos decimales con :.2f
+    # Output is limited to two decimal places using :.2f
     print(f"1) w = 52.5, h = 1.65 → BMI = {bmi(52.5, 1.65):.2f}")
     print(f"2) BMI = {bmi(weight=lb_to_kg(176), height=feet_inches_to_meters(5, 7)):.2f}")
     
 # ============================
-# Bloque de ejecución directa
+# Direct execution block
 # ============================
 if __name__ == "__main__":
     main()

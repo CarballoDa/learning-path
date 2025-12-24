@@ -4,7 +4,7 @@ This repository is dedicated to storing scripts and exercises from different cou
 
 ## 🚀 Current Learning Path
 
-- ✅ Cisco Python Essentials 1 — *Completed and certified*
+- ✅ Cisco Python Essentials 1 — [*Completed and certified*](https://www.credly.com/badges/49457c24-479f-41e2-96a4-aa392f9e0941/public_url)
 - 🔄 Cisco Python Essentials 2 — *In progress*
 
 ## 📂 Repository Structure
@@ -35,3 +35,27 @@ The goal of this repository is to:
 ---
 
 *This repo is a living record of my growth as a developer, evolving with every new course and challenge.*
+
+---
+
+## 📈 Training Progress
+
+### Cisco Python Essentials 1
+
+📂 **Exercises**
+
+This repository documents my progression in Python through a series of practical exercises located in the exercises/ directory. These exercises helped me consolidate core concepts such as functions, control flow, data validation, and exception handling.
+
+🧠 **Skills Practiced**
+
+By working on unit conversions, BMI calculation, factorials, Fibonacci sequences, and LED-style number rendering, I practiced applying mathematical logic, loops, recursion, and core data structures such as lists and dictionaries.
+
+📝 **Code Quality & Documentation**
+
+The consistent use of docstrings and doctests reflects a focus on writing clear, readable, and well-documented code, following good Python development practices.
+
+🎓 **Certifications**
+
+Additional documentation related to my completed certification is available in a separate repository:
+[Certification Repo](https://github.com/CarballoDa/professional-certifications) [Certification Badge](https://www.credly.com/badges/49457c24-479f-41e2-96a4-aa392f9e0941/public_url)
+

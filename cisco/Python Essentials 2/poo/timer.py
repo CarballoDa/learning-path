@@ -131,3 +131,10 @@ timer.next_second()
 print(timer)
 timer.prev_second()
 print(timer)
+
+del timer
+
+try:
+    timer = Timer(0, 0, 90)
+except ValueError:
+    print("Error: valores permitidos horas 0-24, minutos y segundos 0-59")

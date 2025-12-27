@@ -87,3 +87,20 @@ class Weeker:
             'Vie'
         """
         self.__day = (self.__day - n) % 7
+        
+        
+# ====================================
+# Rapid, direct execution tests
+# ====================================
+
+my_weeker = Weeker('Lun')
+my_weeker.add_days(2)
+print(my_weeker)
+my_weeker.substract_days(4)
+print(my_weeker)
+del my_weeker
+
+try:
+    my_weeker = Weeker('Ort')
+except WeekDayError:
+    print("Error: el dia introducido no es un dia de la semana válido.")
